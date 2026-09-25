@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+Party Planner
+{% endblock %}
+
+{% block content %}
+
+<p class="eyebrow">
+PARTY PLANNER
+</p>
+
+<h1>
+Plan the event
+</h1>
+
+
+<form
+    id="form"
+    class="planner"
+>
+
+<label>
+
+Budget (₹)
+
+<input
+    id="budget"
+    type="number"
+    min="1"
+    required
+>
+
+</label>
+
+
+<label>
+
+Guests
+
+<input
+    id="guests"
+    type="number"
+    min="1"
+    required
+>
+
+</label>
+
+
+<label>
+
+Event type
+
+<input
+    id="event_type"
+    placeholder="Birthday, wedding, corporate"
+    required
+>
+
+</label>
+
+
+<label>
+
+Venue
+
+<input
+    id="venue"
+    value="Any"
+>
+
+</label>
+
+
+<label>
+
+City
+
+<input
+    id="city"
+>
+
+</label>
+
+
+<label>
+
+Preferences
+
+<input
+    id="preferences"
+    placeholder="vegetarian, music, simple decor"
+>
+
+</label>
+
+
+<button class="btn">
+Generate plan
+</button>
+
+</form>
+
+
+<div id="result"></div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+document
+.querySelector("#form")
+.addEventListener(
+    "submit",
+    async e => {
+
+        e.preventDefault();
+
+        const r = await api(
+            "/generate-party",
+            {
+                method: "POST",
+
+                body: JSON.stringify({
+
+                    budget:
+                        Number(
+                            budget.value
+                        ),
+
+                    guests:
+                        Number(
+                            guests.value
+                        ),
+
+                    event_type:
+                        event_type.value,
+
+                    venue:
+                        venue.value,
+
+                    city:
+                        city.value,
+
+                    preferences:
+                        preferences.value
+                        .split(",")
+                        .map(
+                            x => x.trim()
+                        )
+                        .filter(Boolean)
+
+                })
+            }
+        );
+
+        renderResult(r);
+
+    }
+);
+
+</script>
+
+{% endblock %}
