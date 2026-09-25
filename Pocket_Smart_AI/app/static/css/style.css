@@ -1,0 +1,392 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: #f7f7fb;
+    color: #181820;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.nav {
+    min-height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5ed;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 5%;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 5;
+}
+
+
+.brand {
+    font-weight: 900;
+    font-size: 1.25rem;
+}
+
+
+.nav nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.link-btn {
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+.container {
+    width: min(1100px, 90%);
+    margin: auto;
+
+    padding: 45px 0 70px;
+}
+
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 30px;
+
+    align-items: center;
+
+    padding: 35px 0 50px;
+}
+
+
+.hero h1,
+.container > h1 {
+    font-size: clamp(
+        2.3rem,
+        6vw,
+        4.6rem
+    );
+
+    line-height: .98;
+}
+
+
+.hero p {
+    color: #666;
+    line-height: 1.7;
+}
+
+
+.eyebrow {
+    font-size: .75rem;
+    letter-spacing: .13em;
+    font-weight: 900;
+}
+
+
+.hero-card {
+    background: #191927;
+    color: #fff;
+
+    border-radius: 28px;
+
+    min-height: 270px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-card span {
+    font-size: 5rem;
+    font-weight: 900;
+}
+
+
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+
+.three {
+    grid-template-columns:
+        repeat(3, 1fr);
+}
+
+
+.card,
+.auth-card,
+.planner,
+.history-card,
+.empty,
+.item,
+.budget-box {
+
+    background: #fff;
+
+    border: 1px solid #e5e5ed;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 28px
+        rgba(0,0,0,.04);
+}
+
+
+.card {
+    padding: 24px;
+}
+
+
+.card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+.auth-card {
+    max-width: 470px;
+    margin: 40px auto;
+    padding: 28px;
+}
+
+
+.planner {
+    max-width: 760px;
+
+    padding: 28px;
+
+    display: grid;
+
+    gap: 18px;
+}
+
+
+label {
+    display: grid;
+
+    gap: 8px;
+
+    font-weight: 750;
+}
+
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border:
+        1px solid #d5d5df;
+
+    border-radius: 10px;
+
+    font: inherit;
+}
+
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+select[multiple] {
+    min-height: 130px;
+}
+
+
+.btn {
+    display: inline-block;
+
+    background: #181820;
+    color: #fff;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    padding: 13px 20px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    width: max-content;
+}
+
+
+.secondary {
+    background: #ececf3;
+    color: #181820;
+}
+
+
+.msg {
+    color: #b42318;
+}
+
+
+.result {
+    margin-top: 35px;
+}
+
+
+.result-grid {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr;
+
+    gap: 20px;
+}
+
+
+.item {
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+
+.item-top {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 12px;
+}
+
+
+.item p {
+    color: #666;
+    line-height: 1.5;
+}
+
+
+.item a {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+
+.pill {
+    background: #eeeef5;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: .75rem;
+}
+
+
+.budget-box {
+    padding: 20px;
+    height: max-content;
+}
+
+
+.bar {
+    height: 9px;
+
+    background: #eee;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.bar i {
+    display: block;
+
+    height: 100%;
+
+    background: #181820;
+}
+
+
+.history-card {
+    padding: 20px;
+    margin: 10px 0;
+}
+
+
+.history-card span {
+    float: right;
+
+    color: #777;
+
+    font-size: .82rem;
+}
+
+
+.empty {
+    text-align: center;
+
+    padding: 55px;
+}
+
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    border-top:
+        1px solid #e5e5ed;
+
+    color: #777;
+
+    background: #fff;
+}
+
+
+@media (max-width: 800px) {
+
+    .hero,
+    .three,
+    .result-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .nav {
+        align-items:
+            flex-start;
+    }
+
+
+    .container {
+        padding-top: 25px;
+    }
+
+}

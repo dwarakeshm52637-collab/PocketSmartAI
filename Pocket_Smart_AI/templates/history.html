@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block content %}
+
+<p class="eyebrow">
+RECOMMENDATION HISTORY
+</p>
+
+<h1>
+Your previous plans
+</h1>
+
+<button
+    id="clear"
+    class="btn secondary"
+>
+Clear history
+</button>
+
+<div id="history"></div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+(async()=>{
+
+    const r =
+        await api(
+            "/history"
+        );
+
+
+    if (!r.ok) {
+
+        location.href =
+            "/login";
+
+        return;
+    }
+
+
+    if (!r.data.length) {
+
+        document
+            .querySelector("#history")
+            .innerHTML =
+            '<div class="empty">No recommendations yet.</div>';
+
+        return;
+    }
+
+
+    document
+        .querySelector("#history")
+        .innerHTML =
+
+        r.data.map(
+            x => `
+
+<article class="history-card">
+
+<strong>
+${escapeHtml(
+    x.result.title ||
+    x.category
+)}
+</strong>
+
+<span>
+${new Date(
+    x.created_at
+).toLocaleString()}
+</span>
+
+<p>
+${escapeHtml(
+    x.result.summary || ""
+)}
+</p>
+
+</article>
+
+`
+        ).join("");
+
+})();
+
+
+document
+.querySelector("#clear")
+.onclick = async () => {
+
+    if (
+        confirm(
+            "Clear all history?"
+        )
+    ) {
+
+        await api(
+            "/history",
+            {
+                method: "DELETE"
+            }
+        );
+
+        location.reload();
+
+    }
+
+};
+
+</script>
+
+{% endblock %}
