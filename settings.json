@@ -1,5 +1,0 @@
-{
-  "python.analysis.extraPaths": ["."],
-  "python.testing.pytestEnabled": true,
-  "python.testing.pytestArgs": ["tests"]
-}
